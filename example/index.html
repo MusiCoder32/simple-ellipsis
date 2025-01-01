@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Ellipsis</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                color: #333;
+                position: relative;
+            }
+
+            .item-2 {
+                width: 100px;
+                border: 1px solid #999;
+                padding: 0 10px;
+                border-radius: 4px;
+                position: absolute;
+                z-index: 200;
+            }
+
+            .item {
+                width: 50px;
+                border: 1px solid #999;
+                padding: 0 10px;
+                border-radius: 4px;
+                margin: 20px;
+            }
+            .item:hover {
+                background-color: gray;
+            }
+
+            .example-2 {
+                width: 500px;
+                height: 200px;
+                border: 1px solid gray;
+                margin-top: 20px;
+                overflow: hidden;
+            }
+            .example-3 {
+                width: 500px;
+                height: 200px;
+                border: 1px solid gray;
+                margin-top: 20px;
+                overflow: hidden;
+            }
+            .example-3 .item {
+                width: 100px;
+            }
+            ul > li {
+                margin-bottom: 10px;
+            }
+            .example-4 {
+                width: 400px;
+            }
+            .svg-hover:hover {
+                opacity: 0.5;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body id="app" style="position: relative">
+        <div
+            style="
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                position: relative;
+                z-index: 100;
+                padding-bottom: 20px;
+            "
+        >
+            <h1 style="padding-top: 30px">ellipsis功能在线预览</h1>
+            <h3 id="currentTime" style="padding-top: 20px; color: dodgerblue"></h3>
+
+            <h4 style="margin-top: 20px">功能简介：</h4>
+            <ol>
+                <li>tooltip超出边界时自动调整其位置，保证提示框在视界内</li>
+                <li>可配置单行是否超长才提示</li>
+                <li>可配置多行提示</li>
+                <li>可自定义提示内容</li>
+                <li>同时支持vue与react</li>
+            </ol>
+            <div style="padding-top: 10px; font-size: 18px">
+                点击这里，查看详细
+                <span style="font-weight: bolder">
+                    <a style="padding-top: 20px" href="https://www.npmjs.com/package/ellipsis" target="_blank">
+                        说明文档
+                    </a></span
+                >
+            </div>
+            <h3 style="padding-top: 10px">欢迎进群建议，提改进需求<span style="color: red">QQ群号：523987240</span></h3>
+
+            <section>
+                <h5 style="text-align: center; padding-top: 20px">1.演示单行文字超长情况下进行提示</h5>
+                <div class="example-2">
+                    <div style="display: flex; justify-content: center">
+                        <div v-ell class="item">顶部ell-t</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between">
+                        <div v-ell:l class="item">左侧ell-l</div>
+                        <div v-ell class="item" style="width: 130px">未超长，不提示</div>
+                        <div v-ell:r class="item">右侧ell-r</div>
+                    </div>
+                    <div style="display: flex; justify-content: center">
+                        <div v-ell:b class="item">底部ell-b</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h5 style="text-align: center; padding-top: 20px">演示单行、多行无论是否超长均提示</h5>
+                <div style="display: flex; justify-content: center">
+                    <div v-ell:t-a class="item" style="width: 200px">顶部ell-a-t</div>
+                </div>
+            </section>
+            <section>
+                <h5 style="text-align: center; padding-top: 20px">演示自定义提示，常应用于图标场景</h5>
+                <div style="display: flex">
+                    <div v-ell:t-a="'这是一个自定义内容的tooltip'"
+                        ><svg width="50" height="50" viewBox="0 0 1024 1024" class="svg-hover">
+                            <path
+                                fill="currentColor"
+                                d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm23.744 191.488c-52.096 0-92.928 14.784-123.2 44.352-30.976 29.568-45.76 70.4-45.76 122.496h80.256c0-29.568 5.632-52.8 17.6-68.992 13.376-19.712 35.2-28.864 66.176-28.864 23.936 0 42.944 6.336 56.32 19.712 12.672 13.376 19.712 31.68 19.712 54.912 0 17.6-6.336 34.496-19.008 49.984l-8.448 9.856c-45.76 40.832-73.216 70.4-82.368 89.408-9.856 19.008-14.08 42.24-14.08 68.992v9.856h80.96v-9.856c0-16.896 3.52-31.68 10.56-45.76 6.336-12.672 15.488-24.64 28.16-35.2 33.792-29.568 54.208-48.576 60.544-55.616 16.896-22.528 26.048-51.392 26.048-86.592 0-42.944-14.08-76.736-42.24-101.376-28.16-25.344-65.472-37.312-111.232-37.312zm-12.672 406.208a54.272 54.272 0 0 0-38.72 14.784 49.408 49.408 0 0 0-15.488 38.016c0 15.488 4.928 28.16 15.488 38.016A54.848 54.848 0 0 0 523.072 768c15.488 0 28.16-4.928 38.72-14.784a51.52 51.52 0 0 0 16.192-38.72 51.968 51.968 0 0 0-15.488-38.016 55.936 55.936 0 0 0-39.424-14.784z"
+                            ></path></svg
+                    ></div>
+                    <div class="item" style="width: 100px" v-ell:t-a="'文字内容自定义'">右侧</div>
+                </div>
+            </section>
+
+            <section>
+                <h5 style="text-align: center; padding-top: 20px">演示多行仅超长时进行提示</h5>
+
+                <h5 style="margin-top: 10px">设置3行超长省略</h5>
+                <div class="example-4" v-ell:t-3>
+                    设置3行超长省略。Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur culpa
+                    doloresConsequatur culpa doloresConsequatur culpa doloresConsequatur culpa dolores
+                    doloresConsequatur culpa dolores
+                </div>
+            </section>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.min.js"></script>
+
+    <script type="module">
+        import EllVue from '../dist/vue/index.js'
+
+        const { createApp } = Vue
+
+        const app = createApp()
+        app.use(EllVue)
+        app.mount('#app')
+    </script>
+</html>

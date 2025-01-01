@@ -1,0 +1,40 @@
+{
+    "name": "simple-ellipsis",
+    "version": "1.0.3",
+    "description": "适用于vue与react的轻量的tooltip组件功能",
+    "keywords": [
+        "ellipsis",
+        "simple-ellipsis"
+    ],
+    "exports": {
+        "./vue": {
+            "import": "./dist/vue/index.js"
+        },
+        "./react": {
+            "import": "./dist/react/index.js"
+        }
+    },
+    "files": [
+        "dist/",
+        "doc/",
+        "packae.json",
+        "README.md"
+    ],
+    "repository": {
+        "type": "gitee",
+        "url": "https://gitee.com/sichuan_meiyijia_industry_w327134/ellipsis.git"
+    },
+    "scripts": {
+        "prettier": "prettier --write --loglevel log src/**/*.{js,json,tsx,css,less,scss,vue,html,md,ts} && prettier --write --loglevel log *.{js,json,html,ts}",
+        "build": "rollup -c"
+    },
+    "author": "w327134@163.com",
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "^2.4.1",
+        "rollup": "^1.32.1",
+        "rollup-plugin-postcss": "^4.0.2",
+        "rollup-plugin-sourcemaps": "^0.6.3",
+        "rollup-plugin-uglify": "^6.0.4"
+    }
+}

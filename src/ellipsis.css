@@ -1,0 +1,264 @@
+/* antd-dark风格 */
+html,
+html[data-ellipsis='antd-dark'] {
+    --ell-max-width: 350px;
+    --ell-background: rgb(64,64,64);
+    --ell-font-size: 14px;
+    --ell-padding: 6px 8px;
+    --ell-line-height: 22px;
+    --ell-color: #fff;
+    --ell-border-radius: 2px;
+    --ell-border-color: none;
+    --ell-border-size: 0;
+}
+/* element-dark风格 */
+html[data-ellipsis='element-dark'] {
+    --ell-max-width: 350px;
+    --ell-background: rgb(48 49 51);
+    --ell-font-size: 12px;
+    --ell-padding: 5px 11px;
+    --ell-line-height: 20px;
+    --ell-color: #fff;
+    --ell-border-radius: 4px;
+    --ell-border-color: none;
+    --ell-border-size: 0;
+}
+/* element-light风格 */
+html[data-ellipsis='element-light'] {
+    --ell-max-width: 350px;
+    --ell-background: #fff;
+    --ell-font-size: 12px;
+    --ell-padding: 5px 11px;
+    --ell-line-height: 20px;
+    --ell-color: rgb(48 49 51);
+    --ell-border-radius: 4px;
+    --ell-border-color: rgb(228 231 237);
+    --ell-border-size: 1px;
+}
+
+.has-ell {
+    --ell-left: 0;
+    --ell-top: 0;
+    --ell-angle-left: 0;
+    --ell-angle-top: 0;
+    --ell-wrap: nowrap;
+    --ell-width: 0;
+    position: relative;
+    --ell-min-width: 0;
+}
+
+.has-ell:before,
+.ell-l:before,
+.ell-r:before,
+.ell-t:before,
+.ell-b:before,
+.ell-a-l:before,
+.ell-a-r:before,
+.ell-a-t:before,
+.ell-a-b:before,
+.ell-m-l:before,
+.ell-m-r:before,
+.ell-m-t:before,
+.ell-m-b:before,
+.elln-l:before,
+.elln-r:before,
+.elln-t:before,
+.elln-b:before {
+    width: 8px;
+    height: 8px;
+    box-sizing: content-box;
+    background-color: var(--ell-background);
+    border: var(--ell-border-size) solid var(--ell-border-color);
+}
+
+/*调试代码，放开注释能让页面中所有tooltip显示出来，便于调试*/
+/*.ell-l:after, .ell-r:after, .ell-t:after, .ell-b:after,.ell-l:before, .ell-r:before, .ell-t:before, .ell-b:before,.has-ell:after,.has-ell:before {*/
+/*  visibility: visible !important;*/
+/*  opacity: 1 !important;*/
+/*}*/
+.ell {
+    /* 作为子无素，若设置为inline-block,可能会撑高父元素高度，故强制为block*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: content-box !important;
+}
+
+.ell-l:after,
+.ell-r:after,
+.ell-t:after,
+.ell-b:after,
+.ell-a-l:after,
+.ell-a-r:after,
+.ell-a-t:after,
+.ell-a-b:after,
+.ell-m-l:after,
+.ell-m-r:after,
+.ell-m-t:after,
+.ell-m-b:after,
+.elln-l:after,
+.elln-r:after,
+.elln-t:after,
+.elln-b:after {
+    position: fixed;
+    content: attr(ell-value);
+    left: 0;
+    top: 0;
+    max-width: var(--ell-max-width);
+    min-width: var(--ell-min-width);
+    font-size: var(--ell-font-size);
+    padding: var(--ell-padding);
+    line-height: var(--ell-line-height);
+    color: var(--ell-color);
+    border-radius: var(--ell-border-radius);
+    border: var(--ell-border-size) solid var(--ell-border-color);
+    box-sizing: content-box !important;
+    visibility: hidden;
+    white-space: var(--ell-wrap);
+    word-break: break-all;
+}
+.ell-l:before,
+.ell-r:before,
+.ell-t:before,
+.ell-b:before,
+.ell-a-l:before,
+.ell-a-r:before,
+.ell-a-t:before,
+.ell-a-b:before,
+.ell-m-l:before,
+.ell-m-r:before,
+.ell-m-t:before,
+.ell-m-b:before,
+.elln-l:before,
+.elln-r:before,
+.elln-t:before,
+.elln-b:before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+}
+
+.ell-a-l,
+.ell-a-r,
+.ell-a-t,
+.ell-a-b,
+.ell-l,
+.ell-r,
+.ell-t,
+.ell-b {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ell-m-l,
+.ell-m-r,
+.ell-m-t,
+.ell-m-b,
+.elln-l,
+.elln-r,
+.elln-t,
+.elln-b {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--ell-line);
+    overflow: hidden;
+    word-break: break-all;
+}
+
+/*.ell-l:hover, .ell-r:hover, .ell-t:hover, .ell-b:hover {*/
+/*  overflow: visible;*/
+/*}*/
+.has-ell:after {
+    max-width: var(--ell-max-width);
+    font-size: var(--ell-font-size);
+    padding: var(--ell-padding);
+    line-height: var(--ell-line-height);
+    color: var(--ell-color);
+    border-radius: var(--ell-border-radius);
+    border: var(--ell-border-size) solid var(--ell-border-color);
+    box-sizing: content-box !important;
+    text-align: left;
+    content: attr(ell-value);
+    position: fixed;
+    left: var(--ell-left);
+    top: var(--ell-top);
+    width: var(--ell-width);
+    background-color: var(--ell-background);
+    white-space: var(--ell-wrap);
+    word-break: break-all;
+    transition: visibility 0.1s;
+    z-index: 9999;
+    visibility: hidden;
+}
+
+.has-ell:before {
+    content: '';
+    position: fixed;
+    left: var(--ell-angle-left);
+    top: var(--ell-angle-top);
+    visibility: hidden;
+    transition: visibility 0.1s;
+    transform: rotate(45deg);
+    z-index: 10000;
+    box-sizing: content-box !important;
+}
+
+.has-ell-top:before {
+    /* clip-path: polygon(0% 100%, 100% 0%, 100% 100%, 0% 100%); */
+    border-bottom-right-radius: 2px;
+}
+
+.has-ell-bottom:before {
+    /* clip-path: polygon(0% 100%, 100% 0%, 0% 0%, 0% 100%); */
+    border-top-left-radius: 2px;
+}
+
+.has-ell-left:before {
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 0%); */
+    border-top-right-radius: 2px;
+}
+
+.has-ell-right:before {
+    /* clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 0% 0%); */
+    border-bottom-left-radius: 2px;
+}
+
+.has-ell-hidden {
+    visibility: hidden;
+}
+
+.has-ell-visibility:before,
+.has-ell-visibility:after {
+    visibility: visible !important;
+}
+
+.has-ell-top:before {
+    border-left-color: transparent;
+    border-top-color: transparent;
+}
+
+.has-ell-bottom:before {
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+}
+
+.has-ell-right:before {
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+
+.has-ell-left:before {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.has-ell:hover:after {
+    visibility: visible;
+}
+
+.has-ell:hover:before {
+    visibility: visible;
+}
