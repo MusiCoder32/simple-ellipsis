@@ -1,7 +1,7 @@
 **补充tooltip超长省略提示功能，轻量便洁，同时支持vue与react**
 
 - 现在大量项目都要求仅文本超长时，才出现提示，而现有的组件中，未提供该功能；
-- 去除多余功能，只保留四个方向的单纯hover提示，轻量简洁；
+- 轻量简洁，使用方便；
 
 
 **在线预览 [http://sichuan_meiyijia_industry_w327134.gitee.io/ellipsis/](http://sichuan_meiyijia_industry_w327134.gitee.io/ellipsis/)**
@@ -131,9 +131,10 @@ document.documentElement.dataset.ellipsis = '自定义的主题名'
 3. 提示框会自动判断提示内容是否超出可视区域，若超出可视区域，提示内容会出现在相反方向。即设置为top方向，但top方向无法显示全部的tooltip内容时，tooltip内容会自动出现在bottom方向；
 
 ### 五、有意思的发现
-- element-ui中的el-tooltip组件默认的深色背景色为rgb(48 49 51)，没有透明度，仔细查看dom结构，将背景色改为有透明度的情况，会出bug，小三角和文本框重叠部分背景色会更深，哈哈。![alt text](image.png)
-- ant design中的Tooltip组件默认的深色背景色为rgba(0, 0, 0, 0.75)，支持透明度，足见ant design在该组件上的设计确实要用心一些。
+- element-ui中的el-tooltip组件默认的深色背景色为rgb(48 49 51)，没有透明度，仔细查看dom结构，将背景色改为有透明度的情况，会出bug，小三角和文本框重叠部分背景色会更深![alt text](image.png)
+- ant design中的Tooltip组件默认的深色背景色为rgba(0, 0, 0, 0.75)，支持透明度。
 
-- 发现的契机在于本方案在配置ant design默认的tooltip样式时，也出现了同样的问题，尝试过使用clip-path裁剪掉多余部分，不过该方案存在缺馅，在某些情况下，会显示异常，三角形和文本框中会出现很细小的缝隙，故本方案也暂不支持设置透明度。
-- 优化的思路仍是参照ant design采取的方案，故改动的地方会较多，等有时间再来优化。
+- 本方案在配置ant design默认的tooltip样式时，会出现了同样的问题，尝试过使用clip-path裁剪掉多余部分，不过该方案存在缺馅，在某些情况下，会显示异常，三角形和文本框中会出现很细小的缝隙，故本方案也暂不支持设置透明度，后续有需要再优化。
+
+- 作者本身常年使用vue项目，故方案对vue项目兼容较好，若其他框架在使用中存在问题，可拷贝核心源码src/index.js与src/ellipsis.css自行改造，核心逻辑全是原生写法，不依赖框架。
 

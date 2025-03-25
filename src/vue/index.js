@@ -88,6 +88,14 @@ export default {
                     modifiers?.delay ? 1000 : 16,
                 )
             },
+            updated: function (dom, binding) {
+                const { value, arg } = binding
+                if (/[lrbt]-a/.test(arg)) {
+                    if (value) {
+                        dom.setAttribute('ell-value', value)
+                    }
+                }
+            },
         })
     },
 }
